@@ -5,20 +5,20 @@ from PyQt5.QtWidgets import QApplication
 from widgets.main_window import MainWindow
 
 save_path = ""
-SETTINGS_PATH = "settings.txt"
+SETTINGS_FILE = "settings.txt"
 
-if not os.path.exists(SETTINGS_PATH):
+if not os.path.exists(SETTINGS_FILE):
 
     save_path = os.environ["HOMEPATH"] + "\\Desktop\\"
 
-    with open("settings.txt", "w") as f:
+    with open(SETTINGS_FILE, "w") as f:
         f.write(save_path)
 
 else:
-    with open("settings.txt", "r") as f:
+    with open(SETTINGS_FILE, "r") as f:
         save_path = f.readline()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    ui = MainWindow(save_path, SETTINGS_PATH)
+    ui = MainWindow(save_path, SETTINGS_FILE)
     sys.exit(app.exec_())
