@@ -62,25 +62,20 @@ class MainWindow(QWidget):
         self.setup_ui()
 
     def setup_ui(self):
-        # Set the Window Title and Window Size
         self.setWindowTitle(self.window_title)
         self.resize(self.window_size[0], self.window_size[1])
 
-        # Create a Frame 1 to hold the Label with instructions
         self.frame_1.setFrameShape(QFrame.StyledPanel)
         self.frame_1.setFrameShadow(QFrame.Raised)
 
-        # Create a Label on Frame 1 to hold the instructions
         self.label_info.setWordWrap(True)
         self.label_info.setText(self.text_label_info)
         self.label_info.setOpenExternalLinks(True)
         self.label_info.setTextInteractionFlags(Qt.TextSelectableByMouse)
 
-        # Create a Frame 2 to hold DragAndDropLabel
         self.frame_2.setFrameShape(QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QFrame.Raised)
 
-        # Create a Label that accepts files by drag-and-drop (see DragAndDropLabel above)
         self.label_target.setFont(QFont(self.font_label_drag_and_drop))
         self.label_target.setAlignment(Qt.AlignCenter)
         self.label_target.setText(self.text_label_drag_and_drop)
@@ -88,24 +83,18 @@ class MainWindow(QWidget):
         self.label_target.setMinimumHeight(150)
         self.label_target.setAcceptDrops(True)
 
-        # Create a Frame 3 to hold Label with information about the path
         self.frame_3.setFrameShape(QFrame.StyledPanel)
         self.frame_3.setFrameShadow(QFrame.Raised)
 
-        # Create a Label in Frame 3 with information about the path
         self.label_question.setText(self.text_label_question)
 
-        # Create a Frame 4 to hold LineEdit and PushButton
         self.frame_4.setFrameShape(QFrame.StyledPanel)
         self.frame_4.setFrameShadow(QFrame.Raised)
 
-        # Create a LineEdit in Frame 4 that shows the saving path
         self.input_directory.setText(self.save_path)
 
-        # Create a PushButton in Frame 4 to browse the saving path
         self.button_browse.setText(self.text_browse_button)
 
-        # Set Vertical Layouts
         self.vertical_layout.addWidget(self.frame_1)
         self.vertical_layout.addWidget(self.frame_2)
         self.vertical_layout.addWidget(self.frame_3)
@@ -119,7 +108,6 @@ class MainWindow(QWidget):
 
         self.vertical_layout_5.addWidget(self.label_target)
 
-        # Set Horizontal Layouts
         self.horizontal_layout.addWidget(self.label_info)
 
         self.horizontal_layout_2.addLayout(self.horizontal_layout)
@@ -130,20 +118,15 @@ class MainWindow(QWidget):
         self.horizontal_layout_5.addWidget(self.button_browse)
         self.horizontal_layout_5.addLayout(self.horizontal_layout_4)
 
-        # Connect the Browse PushButton to browsePath function
         self.button_browse.clicked.connect(self.browse_path)
 
-        # Display the MainWindow with its Widgets on the screen
         self.show()
 
     def browse_path(self):
-        # Create a Select Folder Dialog and return the path
-        self.save_path = str(QFileDialog.getExistingDirectory(self, "Select directory"))
 
-        # Set the path in ./Frame 4/input_directory
+        self.save_path = str(QFileDialog.getExistingDirectory(self, "Select directory"))
         self.input_directory.setText(self.save_path)
 
-        # Save the path to settings.txt (if it doesn't exist then it will be created)
         with open(self.settings_file, "w") as f:
             f.write(self.save_path)
 
