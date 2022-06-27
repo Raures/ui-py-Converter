@@ -21,4 +21,3 @@ class DragAndDropLabel(QLabel):
     def dropEvent(self, event):
 
         to_py(event.mimeData().text()[8:], self.save_path)  # [8:] is used to remove "file:///" from mimeData().text()
-
