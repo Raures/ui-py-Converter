@@ -3,12 +3,7 @@ from PyQt5.QtWidgets import QPushButton, QLineEdit, QVBoxLayout
 from PyQt5.QtWidgets import QHBoxLayout, QFileDialog
 from PyQt5.QtGui import QFont
 from PyQt5.QtCore import Qt
-from drag_and_drop_label import DragAndDropLabel
-
-LINK = "https://sourceforge.net/projects/pyqt/"
-INFO = """Before converting, please make sure that you have PyQt5 installed. To install PyQt5, 
-          you can visit <a href='{}'>this link</a> to download it, or run the following command 
-          in <b>cmd</b>: <font face='Consolas'>pip3 install PyQt5</font>""".format(LINK)
+from widgets.drag_and_drop_label import DragAndDropLabel
 
 
 class MainWindow(QWidget):
@@ -25,8 +20,11 @@ class MainWindow(QWidget):
         self.windowSize = (440, 350)
 
         # Set ./Frame 1/labelInfo download link and text
-        self.linkPyQt = LINK
-        self.textLabelInfo = INFO
+        self.linkPyQt = "https://sourceforge.net/projects/pyqt/"
+        self.textLabelInfo = "Before converting, please make sure that you have PyQt5 installed. \
+                             To install PyQt5, you can visit <a href='{}'>this link</a> to download it, \
+                             or run the following command in <b>cmd</b>: \
+                             <font face='Consolas'> pip3 install PyQt5</font>".format(self.linkPyQt)
 
         # Set ./Frame 2/labelTarget text, style and font
         self.textLabelDragAndDrop = "Drag and drop the <b>user interface</b> (<b>*.ui</b>) file here"
@@ -71,6 +69,7 @@ class MainWindow(QWidget):
         self.labelInfo.setWordWrap(True)
         self.labelInfo.setText(self.textLabelInfo)
         self.labelInfo.setOpenExternalLinks(True)
+        # self.labelInfo.setTextInteractionFlags(Qt.TextSelectableByMouse)
 
         # Create a Frame 2 to hold DragAndDropLabel
         self.frame_2.setFrameShape(QFrame.StyledPanel)
@@ -154,3 +153,4 @@ class MainWindow(QWidget):
         # Save the path to settings.txt (if it doesn't exist then it will be created)
         with open(self.settings_file, "w") as f:
             f.write(self.save_path)
+
