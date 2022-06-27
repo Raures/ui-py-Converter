@@ -19,6 +19,9 @@ else:
     with open(SETTINGS_FILE, "r") as f:
         save_path = f.readline()
 
+        if not os.path.exists(save_path):
+            save_path = DEFAULT_PATH
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     ui = MainWindow(save_path, SETTINGS_FILE)
