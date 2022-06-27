@@ -16,129 +16,128 @@ class MainWindow(QWidget):
         self.settings_file = settings
 
         # Set MainWindow configuration
-        self.windowTitle = "Converter: User Interface to Python"
-        self.windowSize = (440, 350)
+        self.window_title = "Converter: User Interface to Python"
+        self.window_size = (440, 350)
 
-        # Set ./Frame 1/labelInfo download link and text
-        self.linkPyQt = "https://sourceforge.net/projects/pyqt/"
-        self.textLabelInfo = "Before converting, please make sure that you have PyQt5 installed. \
+        # Set ./Frame 1/label_info download link and text
+        self.link_pyqt5 = "https://sourceforge.net/projects/pyqt/"
+        self.text_label_info = "Before converting, please make sure that you have PyQt5 installed. \
                              To install PyQt5, you can visit <a href='{}'>this link</a> to download it, \
                              or run the following command in <b>cmd</b>: \
-                             <font face='Consolas'> pip3 install PyQt5</font>".format(self.linkPyQt)
+                             <font face='Consolas'> pip3 install PyQt5</font>".format(self.link_pyqt5)
 
-        # Set ./Frame 2/labelTarget text, style and font
-        self.textLabelDragAndDrop = "Drag and drop the <b>user interface</b> (<b>*.ui</b>) file here"
-        self.styleLabelDragAndDrop = "QLabel { border: 1px dotted black; }"
-        self.fontLabelDragAndDrop = "Myanmar Text"
+        # Set ./Frame 2/label_target text, style and font
+        self.text_label_drag_and_drop = "Drag and drop the <b>user interface</b> (<b>*.ui</b>) file here"
+        self.style_label_drag_and_drop = "QLabel { border: 1px dotted black; }"
+        self.font_label_drag_and_drop = "Myanmar Text"
 
-        # Set ./Frame 3/labelQuestion text
-        self.textLabelQuestion = "Where should the <b>python</b> file be saved at?"
+        # Set ./Frame 3/label_question text
+        self.text_label_question = "Where should the <b>python</b> file be saved at?"
 
-        # Set ./Frame 4/inputDirectory style
-        self.styleLineEdit = "QLineEdit { padding-bottom: 2px; padding-left: 2px; }"
+        # Set ./Frame 4/input_directory style
+        self.style_line_edit = "QLineEdit { padding-bottom: 2px; padding-left: 2px; }"
 
-        # Set ./Frame 4/buttonBrowse text
-        self.textBrowseButton = "Browse"
+        # Set ./Frame 4/button_browse text
+        self.text_browse_button = "Browse"
 
         # Widgets
         self.frame_1 = QFrame(self)
-        self.labelInfo = QLabel(self.frame_1)
+        self.label_info = QLabel(self.frame_1)
 
         self.frame_2 = QFrame(self)
-        self.labelTarget = DragAndDropLabel(self.save_path)
+        self.label_target = DragAndDropLabel(self.save_path)
 
         self.frame_3 = QFrame(self)
-        self.labelQuestion = QLabel(self.frame_3)
+        self.label_question = QLabel(self.frame_3)
 
         self.frame_4 = QFrame(self.frame_3)
-        self.inputDirectory = QLineEdit(self.frame_4)
-        self.buttonBrowse = QPushButton(self.frame_4)
+        self.input_directory = QLineEdit(self.frame_4)
+        self.button_browse = QPushButton(self.frame_4)
 
         self.setup_ui()
 
     def setup_ui(self):
         # Set the Window Title and Window Size
-        self.setWindowTitle(self.windowTitle)
-        self.resize(self.windowSize[0], self.windowSize[1])
+        self.setWindowTitle(self.window_title)
+        self.resize(self.window_size[0], self.window_size[1])
 
         # Create a Frame 1 to hold the Label with instructions
         self.frame_1.setFrameShape(QFrame.StyledPanel)
         self.frame_1.setFrameShadow(QFrame.Raised)
 
         # Create a Label on Frame 1 to hold the instructions
-        self.labelInfo.setWordWrap(True)
-        self.labelInfo.setText(self.textLabelInfo)
-        self.labelInfo.setOpenExternalLinks(True)
-        self.labelInfo.setTextInteractionFlags(Qt.TextSelectableByMouse)
+        self.label_info.setWordWrap(True)
+        self.label_info.setText(self.text_label_info)
+        self.label_info.setOpenExternalLinks(True)
+        self.label_info.setTextInteractionFlags(Qt.TextSelectableByMouse)
 
         # Create a Frame 2 to hold DragAndDropLabel
         self.frame_2.setFrameShape(QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QFrame.Raised)
 
         # Create a Label that accepts files by drag-and-drop (see DragAndDropLabel above)
-        self.labelTarget.setFont(QFont(self.fontLabelDragAndDrop))
-        self.labelTarget.setAlignment(Qt.AlignCenter)
-        self.labelTarget.setText(self.textLabelDragAndDrop)
-        self.labelTarget.setStyleSheet(self.styleLabelDragAndDrop)
-        self.labelTarget.setMinimumHeight(150)
-        self.labelTarget.setAcceptDrops(True)
+        self.label_target.setFont(QFont(self.font_label_drag_and_drop))
+        self.label_target.setAlignment(Qt.AlignCenter)
+        self.label_target.setText(self.text_label_drag_and_drop)
+        self.label_target.setStyleSheet(self.style_label_drag_and_drop)
+        self.label_target.setMinimumHeight(150)
+        self.label_target.setAcceptDrops(True)
 
         # Create a Frame 3 to hold Label with information about the path
         self.frame_3.setFrameShape(QFrame.StyledPanel)
         self.frame_3.setFrameShadow(QFrame.Raised)
 
         # Create a Label in Frame 3 with information about the path
-        self.labelQuestion.setText(self.textLabelQuestion)
+        self.label_question.setText(self.text_label_question)
 
         # Create a Frame 4 to hold LineEdit and PushButton
         self.frame_4.setFrameShape(QFrame.StyledPanel)
         self.frame_4.setFrameShadow(QFrame.Raised)
 
         # Create a LineEdit in Frame 4 that shows the saving path
-        self.inputDirectory.setText(self.save_path)
-        self.inputDirectory.setStyleSheet(self.styleLineEdit)
+        self.input_directory.setText(self.save_path)
 
         # Create a PushButton in Frame 4 to browse the saving path
-        self.buttonBrowse.setText(self.textBrowseButton)
+        self.button_browse.setText(self.text_browse_button)
 
         # Create & Set Vertical Layouts
-        self.verticalLayout = QVBoxLayout()
-        self.verticalLayout.addWidget(self.frame_1)
-        self.verticalLayout.addWidget(self.frame_2)
-        self.verticalLayout.addWidget(self.frame_3)
+        self.vertical_layout = QVBoxLayout()
+        self.vertical_layout.addWidget(self.frame_1)
+        self.vertical_layout.addWidget(self.frame_2)
+        self.vertical_layout.addWidget(self.frame_3)
 
-        self.verticalLayout_2 = QVBoxLayout(self)
-        self.verticalLayout_2.addLayout(self.verticalLayout)
+        self.vertical_layout_2 = QVBoxLayout(self)
+        self.vertical_layout_2.addLayout(self.vertical_layout)
 
-        self.verticalLayout_3 = QVBoxLayout()
-        self.verticalLayout_3.addWidget(self.labelQuestion)
-        self.verticalLayout_3.addWidget(self.frame_4)
+        self.vertical_layout_3 = QVBoxLayout()
+        self.vertical_layout_3.addWidget(self.label_question)
+        self.vertical_layout_3.addWidget(self.frame_4)
 
-        self.verticalLayout_4 = QVBoxLayout(self.frame_3)
-        self.verticalLayout_4.addLayout(self.verticalLayout_3)
+        self.vertical_layout_4 = QVBoxLayout(self.frame_3)
+        self.vertical_layout_4.addLayout(self.vertical_layout_3)
 
-        self.verticalLayout_5 = QVBoxLayout()
-        self.verticalLayout_5.addWidget(self.labelTarget)
+        self.vertical_layout_5 = QVBoxLayout()
+        self.vertical_layout_5.addWidget(self.label_target)
 
         # Create & Set Horizontal Layouts
-        self.horizontalLayout = QHBoxLayout()
-        self.horizontalLayout.addWidget(self.labelInfo)
+        self.horizontal_layout = QHBoxLayout()
+        self.horizontal_layout.addWidget(self.label_info)
 
-        self.horizontalLayout_2 = QHBoxLayout(self.frame_1)
-        self.horizontalLayout_2.addLayout(self.horizontalLayout)
+        self.horizontal_layout_2 = QHBoxLayout(self.frame_1)
+        self.horizontal_layout_2.addLayout(self.horizontal_layout)
 
-        self.horizontalLayout_3 = QHBoxLayout(self.frame_2)
-        self.horizontalLayout_3.addLayout(self.verticalLayout_5)
+        self.horizontal_layout_3 = QHBoxLayout(self.frame_2)
+        self.horizontal_layout_3.addLayout(self.vertical_layout_5)
 
-        self.horizontalLayout_4 = QHBoxLayout()
+        self.horizontal_layout_4 = QHBoxLayout()
 
-        self.horizontalLayout_5 = QHBoxLayout(self.frame_4)
-        self.horizontalLayout_5.addWidget(self.inputDirectory)
-        self.horizontalLayout_5.addWidget(self.buttonBrowse)
-        self.horizontalLayout_5.addLayout(self.horizontalLayout_4)
+        self.horizontal_layout_5 = QHBoxLayout(self.frame_4)
+        self.horizontal_layout_5.addWidget(self.input_directory)
+        self.horizontal_layout_5.addWidget(self.button_browse)
+        self.horizontal_layout_5.addLayout(self.horizontal_layout_4)
 
         # Connect the Browse PushButton to browsePath function
-        self.buttonBrowse.clicked.connect(self.browse_path)
+        self.button_browse.clicked.connect(self.browse_path)
 
         # Display the MainWindow with its Widgets on the screen
         self.show()
@@ -147,8 +146,8 @@ class MainWindow(QWidget):
         # Create a Select Folder Dialog and return the path
         self.save_path = str(QFileDialog.getExistingDirectory(self, "Select directory"))
 
-        # Set the path in ./Frame 4/inputDirectory
-        self.inputDirectory.setText(self.save_path)
+        # Set the path in ./Frame 4/input_directory
+        self.input_directory.setText(self.save_path)
 
         # Save the path to settings.txt (if it doesn't exist then it will be created)
         with open(self.settings_file, "w") as f:
