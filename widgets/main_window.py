@@ -69,7 +69,7 @@ class MainWindow(QWidget):
         self.labelInfo.setWordWrap(True)
         self.labelInfo.setText(self.textLabelInfo)
         self.labelInfo.setOpenExternalLinks(True)
-        # self.labelInfo.setTextInteractionFlags(Qt.TextSelectableByMouse)
+        self.labelInfo.setTextInteractionFlags(Qt.TextSelectableByMouse)
 
         # Create a Frame 2 to hold DragAndDropLabel
         self.frame_2.setFrameShape(QFrame.StyledPanel)
