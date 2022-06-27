@@ -6,7 +6,7 @@ from widgets.main_window import MainWindow
 
 save_path = ""
 SETTINGS_FILE = "settings.txt"
-DEFAULT_PATH = os.environ["HOMEPATH"] + "\\Desktop\\"
+DEFAULT_PATH = os.path.join(os.environ['USERPROFILE'], 'Desktop')
 
 if not os.path.exists(SETTINGS_FILE):
 
