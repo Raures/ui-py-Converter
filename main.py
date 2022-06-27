@@ -6,10 +6,11 @@ from widgets.main_window import MainWindow
 
 save_path = ""
 SETTINGS_FILE = "settings.txt"
+DEFAULT_PATH = os.environ["HOMEPATH"] + "\\Desktop\\"
 
 if not os.path.exists(SETTINGS_FILE):
 
-    save_path = os.environ["HOMEPATH"] + "\\Desktop\\"
+    save_path = DEFAULT_PATH
 
     with open(SETTINGS_FILE, "w") as f:
         f.write(save_path)
