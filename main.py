@@ -16,11 +16,12 @@ if not os.path.exists(SETTINGS_FILE):
         f.write(save_path)
 
 else:
-    with open(SETTINGS_FILE, "r") as f:
+    with open(SETTINGS_FILE, "w+") as f:
         save_path = f.readline()
 
         if not os.path.exists(save_path):
             save_path = DEFAULT_PATH
+            f.write(save_path)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
