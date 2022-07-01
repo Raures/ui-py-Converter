@@ -1,7 +1,7 @@
 # User Interface (\*.ui) to Python (\*.py) Converter
-What it is and how to use
+
 # Description
-This is an easy to use drag-and-drop GUI program that converts a given \*.ui file to \*.py.
+This program provides a GUI that makes \*.ui to \*.py file conversion process faster by allowing the user to simply drag and drop the file on the widget.
 # How to use
 1. Run the program.
 2. Select the path where you want the \*.py file to be saved. *(optional)*
